@@ -1,0 +1,8 @@
+{
+  "agent_id": "my-first-agent",
+  "timezone": "Europe/Moscow",
+  "state_db": "./data/state.sqlite3",
+  "max_events_per_run": 30,
+  "sources": [{"type": "fixture", "name": "example", "path": "./examples/events.json"}],
+  "destination": {"type": "file", "path": "./data/reports.jsonl"}
+}
