@@ -1,0 +1,10 @@
+[Unit]
+Description=Run Universal Agent every day at 09:00 Moscow time
+
+[Timer]
+OnCalendar=*-*-* 09:00:00 Europe/Moscow
+Persistent=true
+Unit=agent.service
+
+[Install]
+WantedBy=timers.target
