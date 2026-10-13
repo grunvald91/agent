@@ -190,3 +190,13 @@ NEVER:
 - Официальный пример: https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/daily-brief
 - Открытый формат Agent Skills: https://agentskills.io/specification
 - Документация Claude Managed Agents: https://platform.claude.com/docs/
+
+## Существующая исполняемая реализация в этом репозитории
+
+В корне уже есть проверяемый независимый от Claude MVP: `agent_runtime.py`, `config.example.json`, `tests/test_runtime.py`, `deploy/agent.timer` и `README.md`. **Не переписывай основу без причины**: сначала изучи код и тесты, затем расширяй совместимыми адаптерами.
+
+Рабочий путь: `cp config.example.json config.json`; `python3 agent_runtime.py dry-run --config config.json`; `python3 -m unittest discover -s tests -v`. Настоящие отправки и расписание **не включены** по умолчанию.
+
+В MVP реализованы JSON-фикстуры и GitHub Issues как источники, файловый получатель и Telegram как доставки, SQLite-состояние, операторское восстановление сомнительной отправки и необязательный OpenAI-compatible API. **Нет** универсального MCP-клиента, планировщика внутри Python, native Claude SDK или полнофункционального планировщика инструментов; не заявляй, что они есть. Для расширения добавляй адаптеры и регрессионные тесты.
+
+Не использовать GitHub Actions без отдельного разрешения, не хранить API-ключи в Git, не публиковать реальные сообщения и не активировать systemd.timer без явной команды владельца.
