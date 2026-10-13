@@ -1,0 +1,11 @@
+[Unit]
+Description=Universal Agent run once
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=CHANGE_ME
+WorkingDirectory=/opt/agent
+ExecStart=/usr/bin/python3 /opt/agent/agent_runtime.py run --config /opt/agent/config.json
+# Recommended: use systemd credentials/environment outside the repository.
